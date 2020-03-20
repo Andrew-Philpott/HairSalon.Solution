@@ -19,26 +19,6 @@ namespace HairSalon.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HairSalon.Models.Appointment", b =>
-                {
-                    b.Property<Guid>("AppointmentId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("ClientId");
-
-                    b.Property<Guid>("StylistId");
-
-                    b.Property<int>("TimeSlot");
-
-                    b.HasKey("AppointmentId");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("StylistId");
-
-                    b.ToTable("Appointments");
-                });
-
             modelBuilder.Entity("HairSalon.Models.Client", b =>
                 {
                     b.Property<Guid>("ClientId")
@@ -62,24 +42,9 @@ namespace HairSalon.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<TimeSpan>("ShiftStart");
-
                     b.HasKey("StylistId");
 
                     b.ToTable("Stylists");
-                });
-
-            modelBuilder.Entity("HairSalon.Models.Appointment", b =>
-                {
-                    b.HasOne("HairSalon.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HairSalon.Models.Stylist", "Stylist")
-                        .WithMany("Appointments")
-                        .HasForeignKey("StylistId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HairSalon.Models.Client", b =>
