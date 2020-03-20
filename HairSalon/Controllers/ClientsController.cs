@@ -1,61 +1,62 @@
 using Microsoft.AspNetCore.Mvc;
-using Salon.Models;
+using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Salon.Controllers
+namespace HairSalon.Controllers
 {
-    public class ClientsController : Controller {
+  public class ClientsController : Controller
+  {
 
-      private readonly SalonContext _db;
+    private readonly HairSalonContext _db;
 
-    public ClientsController(SalonContext db)
+    public ClientsController(HairSalonContext db)
     {
       _db = db;
     }
 
-    public ActionResult Index()
-    {
-    
-    }
+    // public ActionResult Index()
+    // {
 
-    public ActionResult Create()
-    {
-   
-    }
+    // }
 
-    [HttpPost]
-    public ActionResult Create(Client client)
-    {
-    
-    }
+    // public ActionResult Create()
+    // {
 
-    public ActionResult Details(int id)
-    {
-   
-    }
+    // }
 
-    public ActionResult Edit(int id)
-    {
-    
-    }
+    // [HttpPost]
+    // public ActionResult Create(Client client)
+    // {
 
-    [HttpPost]
-    public ActionResult Edit(Client client)
-    {
- 
-    }
+    // }
 
-    public ActionResult Delete(int id)
-    {
-    
-    }
+    // public ActionResult Details(int id)
+    // {
 
-    [HttpPost]
-    public ActionResult DeleteConfirmed(int id)
-    {
-   
-    }
-    }
+    // }
+
+    // public ActionResult Edit(int id)
+    // {
+
+    // }
+
+    // [HttpPost]
+    // public ActionResult Edit(Client client)
+    // {
+
+    // }
+
+    // public ActionResult Delete(int id)
+    // {
+
+    // }
+
+    // [HttpPost]
+    // public ActionResult DeleteConfirmed(int id)
+    // {
+
+    // }
+  }
 }

@@ -3,23 +3,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Salon.Models
+namespace HairSalon.Models
 {
-  public class SalonContextContextFactory : IDesignTimeDbContextFactory<SalonContext>
+  public class HairSalonContextContextFactory : IDesignTimeDbContextFactory<HairSalonContext>
   {
-    SalonContext IDesignTimeDbContextFactory<SalonContext>.CreateDbContext(string[] args)
+    HairSalonContext IDesignTimeDbContextFactory<HairSalonContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
         .Build();
 
-      var builder = new DbContextOptionsBuilder<SalonContext>();
+      var builder = new DbContextOptionsBuilder<HairSalonContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
       builder.UseSqlServer(connectionString);
 
-      return new SalonContext(builder.Options);
+      return new HairSalonContext(builder.Options);
     }
   }
 }
