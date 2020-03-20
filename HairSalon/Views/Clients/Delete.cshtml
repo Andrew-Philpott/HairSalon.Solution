@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model HairSalon.Models.Stylist
+@model HairSalon.Models.Client
 
 <div class="header">
   <h1>Are you sure you want to remove @Html.DisplayFor(model => model.Name)?
@@ -15,5 +15,5 @@
 }
 
 <div class="links">
-  @Html.ActionLink("Back to Stylists", "Index")
+  @Html.ActionLink("Back to Clients", "Index", new { id = Model.ClientId })
 </div>

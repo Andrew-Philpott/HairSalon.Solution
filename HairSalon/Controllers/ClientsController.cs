@@ -1,3 +1,4 @@
+using System;
 using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,26 +44,26 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    // public ActionResult Edit(int id)
-    // {
+    public ActionResult Details(Guid id)
+    {
+      Client thisClient = _db.Clients
+        .FirstOrDefault(client => client.ClientId == id);
+      return View(thisClient);
+    }
+    public ActionResult Delete(Guid id)
+    {
+      Client thisClient = _db.Clients
+       .FirstOrDefault(client => client.ClientId == id);
+      return View(thisClient);
+    }
 
-    // }
-
-    // [HttpPost]
-    // public ActionResult Edit(Client client)
-    // {
-
-    // }
-
-    // public ActionResult Delete(int id)
-    // {
-
-    // }
-
-    // [HttpPost]
-    // public ActionResult DeleteConfirmed(int id)
-    // {
-
-    // }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(Guid id)
+    {
+      var thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      _db.Clients.Remove(thisClient);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

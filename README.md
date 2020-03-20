@@ -25,46 +25,46 @@
 
 | Index | /stylists | GET | Displays list of all stylists |
 
+| Search | /stylists/search/{name} | GET | Displays list of all stylists with the name in the query string |
+
 | Create | /stylists/create | GET | Offers a form to create a stylist |
 
 | Create | /stylists | POST | Create a new stylist object |
 
 | Details | /stylists/{id} | GET | Displays details of a specific stylist |
 
-| Edit | /stylists/{id}/edit | GET | Offers form to edit a specific stylist |
+| Delete | /stylists/{id}/delete | Get | Offers a from to delete a stylist |
 
-| Update | /stylists/{id} | PATCH (via POST) | Updates a specific stylist |
-
-| Delete | /stylists/{id} | POST | Deletes a specific stylist |
+| DeleteConfirmed | /stylists/{id} | POST | Deletes a specific stylist |
 
 | Index | /clients | GET | Displays list of all clients |
 
-| Create | /clients/create | GET | Offers a form to create a restaurant |
+| Search | /clients/search/{name} | GET | Displays list of all clients with the name in the query string |
 
-| Create | /restaurtants | POST | Create a new restaurant object |
+| Create | /clients/create | GET | Offers a form to create a client |
 
-| Details | /restaurtants/{id} | GET | Displays details of a specific object |
+| Create | /clients | POST | Create a new client object |
 
-| Edit | /restaurtants/{id}/edit | GET | Offers form to edit a specific restaurant |
+| Details | /clients/{id} | GET | Displays details of a specific object |
 
-| Update | /restaurtants/{id} | PATCH (via POST) | Updates a specific restaurant |
+| Delete | /clients/{id}/delete | Get | Offers a from to delete a client |
 
-| Delete | /restaurtants/{id} | POST | Deletes a specific restaurant |
+| DeleteConfirmed | /clients/{id} | POST | Deletes a specific client |
 
 </details>
 
 ## Description
 
-C#/.NET MVC website that organizes restaurant based on cuisine. This application allows you to create cuisines and restaurants per type of cuisine. The website will prompt you to register an account and log in to view restaurants. Then you can view, create, delete, and update your cuisines and restaurants. This project focuses on using .NET Core MVC, Authentication, SQL databases/Migration, and many-to-many design for data.
+C#/.NET MVC website that allows a manager to create stylists and clients and view their relationships.
 
 ## Installation Requirements
 
 - Clone the repository on Github
 - Open the terminal on your desktop
 - \$git clone "insert your cloned URL here"
-- Change directory to the Salon directory, within the Salon.Solution directory
+- Change directory to the HairSalon directory, within the HairSalon.Solution directory
 - \$dotnet restore
-- Recreate our database structure with migration:
+- Recreate our database structure with migration: (Please note that the connection string is for sqlserver)
   - \$dotnet ef migrations add Initial
   - \$dotnet ef database update
 - \$dotnet run
