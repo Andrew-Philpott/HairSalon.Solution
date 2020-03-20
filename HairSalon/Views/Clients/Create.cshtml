@@ -1,24 +1,21 @@
-
-
 @{
   Layout = "_Layout";
-  @Html.Partial("header")
 }
-
 
 @model HairSalon.Models.Client
 
-<h1>Add a new client</h1>
+<div class="header">
+  <h1>Add a new client</h1>
+</div>
 
+<div class="create-form">
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
-
-  @Html.Label("Stylist")
-  @Html.DropDownList("StylistId")
-  <input type="submit" value="Add new client" class="btn btn-default" />
+  <p>@Html.LabelFor(model => model.Name) @Html.TextBoxFor(model => model.Name)</p>
+  <p>@Html.Label("Stylist") @Html.DropDownList("StylistId")</p>
+  <input type="submit" value="Add new client" class="btn btn-primary" />
 }
+</div>
 
 <div class="links">
   <p>@Html.ActionLink("Show all clients", "Index")</p>

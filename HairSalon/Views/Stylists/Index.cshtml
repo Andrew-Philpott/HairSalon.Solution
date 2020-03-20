@@ -1,20 +1,21 @@
 @{ Layout = "_Layout"; } 
 @using HairSalon.Models;
- @model IEnumerable<HairSalon.Models.Stylist>;
+@model IEnumerable<HairSalon.Models.Stylist>;
   
-  <div class="search">
-    <h2>Search Stylists</h2>
-        <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
+<div class="search">
+  <h2>Search Stylists</h2>
+    <form action="/stylists/search" method="get" class="form-inline my-2 my-lg-0">
+    <input
+      name="name"
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">
+      Search
+    </button>
+  </form>
 </div>
 
 <div class="links">
@@ -22,11 +23,12 @@
     <p>@Html.ActionLink("Home", "Index", "Home")</p>
 </div>
 
-<div class="header">
-  <h1>Stylists</h1>
-</div>
+
 
   @if (@Model.Any()) {
+    <div class="header">
+  <h1>Stylists</h1>
+</div>
   <div class="list">
     @foreach (Stylist stylist in Model) {
     <div class="stylist">
@@ -38,7 +40,7 @@
     }
   </div>
   } else {
-  <h3>No Stylists have been added yet!</h3>
+        <div class="header">
+  <h1>No Stylists have been added yet!</h1>
+</div>
   }
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

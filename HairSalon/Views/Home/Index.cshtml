@@ -1,13 +1,17 @@
-@{
-  Layout = "_Layout";
-}
-<div class="header">
+@{ Layout = "_Layout"; }
 
+<div class="row">
+  <div class="col-12">
+    <div class="home">
+      <h1>Welcome to the Hair Salon Management</h1>
+    </div>
+  </div>
 </div>
-
-<h1>Welcome to the Hair Salon Management</h1>
-
-<div class="links">
-  <p>@Html.ActionLink("See all stylists", "Index", "Stylists")</p>
-  <p>@Html.ActionLink("See all clients", "Index", "Clients")</p>
+<div class="row">
+  <div class="col-6 home">
+    <p>@Html.ActionLink("View Stylists", "Index", "Stylists")</p>
+  </div>
+  <div class="col-6 home">
+    <p>@Html.ActionLink("View Clients", "Index", "Clients")</p>
+  </div>
 </div>

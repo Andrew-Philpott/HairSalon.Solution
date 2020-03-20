@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+@model IEnumerable<HairSalon.Models.Client>;
+
+<div class="header">
+  <h1>Search Results</h1>
+</div>
+
+<div class="links">
+  <p>@Html.ActionLink("Add Client", "Create")</p>
+  <p>@Html.ActionLink("View All Clients", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+
+@if (@Model.Any())
+{
+<div class="list">
+  @foreach (Client client in Model)
+  {
+  <div class="client">
+    <h2>@Html.ActionLink($"{client.Name}", "Details", new { id = client.ClientId })</h2>
+  </div>
+  }
+</div>
+}
+else
+{
+  <h2>No matches.</h2>
+} 
