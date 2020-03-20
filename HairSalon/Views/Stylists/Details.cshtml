@@ -5,10 +5,11 @@
 @model HairSalon.Models.Stylist
 @using HairSalon.Models
 
-<h1>@Html.DisplayFor(model => model.Name)</h1>
+<div class="header">
+  <h1>@Html.DisplayFor(model => model.Name)</h1>
+</div>
 <hr />
-  <h3>Clients:</h3>
-
+<h3>Clients:</h3>
 <div class="clients">
     @if(@Model.Clients.Count == 0) {
       <p>There are no clients for this stylist.</p>

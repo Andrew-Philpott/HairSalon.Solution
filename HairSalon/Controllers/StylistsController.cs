@@ -22,6 +22,12 @@ namespace HairSalon.Controllers
       IEnumerable<Stylist> model = _db.Stylists.ToList();
       return View(model);
     }
+    [HttpPost]
+    public ActionResult Search(string name)
+    {
+      List<Stylist> model = _db.Stylists.Where(stylist => stylist.Name == name).ToList();
+      return View(model);
+    }
 
     public ActionResult Create()
     {

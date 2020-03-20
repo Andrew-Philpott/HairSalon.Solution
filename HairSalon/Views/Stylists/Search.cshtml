@@ -1,0 +1,31 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+@model IEnumerable<HairSalon.Models.Stylist>;
+
+<div class="header">
+  <h1>Search Results</h1>
+</div>
+
+<div class="links">
+    <p>@Html.ActionLink("Add Stylist", "Create")</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>
+
+  @if (@Model.Any())
+  {
+    <div class="list">
+      @foreach (Stylist stylist in Model)
+      {
+        <div class="stylist">
+          <h4>@Html.ActionLink($"{stylist.Name}", "Details", new { id = stylist.StylistId })</h4>
+        </div>
+      }
+    </div>
+  }
+  else
+  {
+    <h3>There are no stylists named</h3>
+  } 
