@@ -3,6 +3,7 @@ using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HairSalon.Controllers
 {
@@ -16,26 +17,31 @@ namespace HairSalon.Controllers
       _db = db;
     }
 
-    // public ActionResult Index()
-    // {
+    public ActionResult Index()
+    {
+      IEnumerable<Stylist> model = _db.Stylists.ToList();
+      return View(model);
+    }
 
-    // }
+    public ActionResult Create()
+    {
+      return View();
+    }
 
-    // public ActionResult Create()
-    // {
+    [HttpPost]
+    public ActionResult Create(Stylist stylist)
+    {
+      _db.Stylists.Add(stylist);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // }
-
-    // [HttpPost]
-    // public ActionResult Create(Stylist stylist)
-    // {
-
-    // }
-
-    // public ActionResult Details(int id)
-    // {
-
-    // }
+    public ActionResult Details(Guid id)
+    {
+      Stylist thisStylist = _db.Stylists
+        .FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(thisStylist);
+    }
 
     // public ActionResult Edit(int id)
     // {
