@@ -16,9 +16,7 @@ namespace HairSalon.Models
 
       var builder = new DbContextOptionsBuilder<HairSalonContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
-
       builder.UseSqlServer(connectionString);
-
       return new HairSalonContext(builder.Options);
     }
   }

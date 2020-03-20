@@ -4,14 +4,16 @@ using HairSalon.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HairSalon.Migrations
 {
     [DbContext(typeof(HairSalonContext))]
-    partial class HairSalonContextModelSnapshot : ModelSnapshot
+    [Migration("20200320191736_FixAppointmentClient")]
+    partial class FixAppointmentClient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,15 +26,11 @@ namespace HairSalon.Migrations
                     b.Property<Guid>("AppointmentId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("ClientId");
-
                     b.Property<Guid>("StylistId");
 
                     b.Property<int>("TimeSlot");
 
                     b.HasKey("AppointmentId");
-
-                    b.HasIndex("ClientId");
 
                     b.HasIndex("StylistId");
 
@@ -44,11 +42,15 @@ namespace HairSalon.Migrations
                     b.Property<Guid>("ClientId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<Guid>("AppointmentId");
+
                     b.Property<string>("Name");
 
                     b.Property<Guid>("StylistId");
 
                     b.HasKey("ClientId");
+
+                    b.HasIndex("AppointmentId");
 
                     b.HasIndex("StylistId");
 
@@ -71,11 +73,6 @@ namespace HairSalon.Migrations
 
             modelBuilder.Entity("HairSalon.Models.Appointment", b =>
                 {
-                    b.HasOne("HairSalon.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("HairSalon.Models.Stylist", "Stylist")
                         .WithMany("Appointments")
                         .HasForeignKey("StylistId")
@@ -84,6 +81,11 @@ namespace HairSalon.Migrations
 
             modelBuilder.Entity("HairSalon.Models.Client", b =>
                 {
+                    b.HasOne("HairSalon.Models.Appointment", "Appointment")
+                        .WithMany()
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("HairSalon.Models.Stylist", "Stylist")
                         .WithMany("Clients")
                         .HasForeignKey("StylistId")

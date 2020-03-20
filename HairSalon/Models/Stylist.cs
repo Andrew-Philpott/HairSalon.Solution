@@ -11,8 +11,8 @@ namespace HairSalon.Models
     }
     public Guid StylistId { get; set; }
     public string Name { get; set; }
-    public TimeSpan ShiftStart { get; set; }
+    // public TimeSpan ShiftStart { get; set; }
     public virtual ICollection<Client> Clients { get; set; }
-    public virtual ICollection<Appointment> Appointments { get; set; }
+    // public virtual ICollection<Appointment> Appointments { get; set; }
   }
 }
