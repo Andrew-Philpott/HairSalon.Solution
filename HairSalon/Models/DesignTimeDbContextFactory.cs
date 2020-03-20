@@ -7,7 +7,6 @@ namespace Salon.Models
 {
   public class SalonContextContextFactory : IDesignTimeDbContextFactory<SalonContext>
   {
-
     SalonContext IDesignTimeDbContextFactory<SalonContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -18,7 +17,7 @@ namespace Salon.Models
       var builder = new DbContextOptionsBuilder<SalonContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-      builder.UseMySql(connectionString);
+      builder.UseSqlServer(connectionString);
 
       return new SalonContext(builder.Options);
     }
